@@ -76,3 +76,15 @@ Desktop.ini
 *.bak
 *.swp
 *.swo
+
+
+# =========================
+# More cmake config/bruild artifacts
+# =========================
+ALL_BUILD.vcxproj
+ALL_BUILD.vcxproj.filters
+AutonomousAgentSim.sln
+AutonomousAgentSim.vcxproj
+AutonomousAgentSim.vcxproj.filters
+ZERO_CHECK.vcxproj
+ZERO_CHECK.vcxproj.filters
