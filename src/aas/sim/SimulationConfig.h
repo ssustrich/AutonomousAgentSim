@@ -6,8 +6,13 @@ struct SimulationConfig
 {
     // Placeholder for future:
     // fixed timestep, determinism flags, logging, etc.
-    int droneCount = 0; 
-    Vector3 worldMin;
-    Vector3 worldMax;
+    int agentCount = 0;
+    Vector3 worldMin, worldMax;
+    float dt, maxSpeed, maxAccel, neighborRadius, separationRadius;
+    float wSeparation, wAlignment, wCohesion;   
+    enum boundaryBehavior {
+        Wrap, Bounce
+    };
+
 
 };

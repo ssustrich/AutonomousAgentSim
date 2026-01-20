@@ -13,16 +13,16 @@ int main() {
     const Vector3 WORLD_MIN{-WORLD_XY_HALF_EXTENT_M, -WORLD_XY_HALF_EXTENT_M, WORLD_Z_MIN_M};
     const Vector3 WORLD_MAX{ WORLD_XY_HALF_EXTENT_M,  WORLD_XY_HALF_EXTENT_M, WORLD_Z_MAX_M};
 
-    const int NUM_OF_DRONES = 1;
+    const int AGENT_COUNT = 100;
     
     SimulationConfig simulationConfig;
-    simulationConfig.droneCount = NUM_OF_DRONES;
+    simulationConfig.agentCount = AGENT_COUNT;
     simulationConfig.worldMax = WORLD_MAX;
     simulationConfig.worldMin = WORLD_MIN;
 
     Simulation sim(simulationConfig);
 
-    if (!sim.Initilizel())
+    if (!sim.Initialize())
         return EXIT_FAILURE;
 
     return 0;

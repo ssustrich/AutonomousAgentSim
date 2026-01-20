@@ -11,6 +11,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 add_executable(AutonomousAgentSim
     src/main.cpp
     src/aas/sim/Simulation.cpp
+    src/aas/drone/Boid.cpp
 )
 
 # Allow includes like: #include "math/Vector3.h"

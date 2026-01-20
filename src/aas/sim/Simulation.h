@@ -3,7 +3,7 @@
 #include <vector>
 #include <cstddef>
 
-#include "aas\drone\Drone.h"
+#include "aas\drone\Boid.h"
 #include "aas\sim\World.h"
 #include "SimulationConfig.h"
 
@@ -13,7 +13,7 @@ public:
     explicit Simulation(const SimulationConfig& config);
 
     // World construction
-    bool Initilizel();
+    bool Initialize();
 
     // Execution
     bool StepOne();
@@ -21,12 +21,13 @@ public:
 
 private:
     bool ValidateWorld() const;
+    std::vector<Boid> boids_;
 
 private:
     SimulationConfig config_;
 
     WorldBounds worldBounds_{};
-    std::vector<Drone> drones_;
+
 
     bool worldInitialized_{false};
 };
