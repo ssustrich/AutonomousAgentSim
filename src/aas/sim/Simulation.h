@@ -18,16 +18,13 @@ public:
     // Execution
     bool StepOne();
     bool StepN(std::size_t numSteps);
+    bool run();
 
-private:
-    bool ValidateWorld() const;
-    std::vector<Boid> boids_;
 
 private:
     SimulationConfig config_;
-
     WorldBounds worldBounds_{};
-
-
     bool worldInitialized_{false};
+    bool ValidateWorld() const;
+    std::vector<Boid> boids_;
 };

@@ -9,6 +9,7 @@ int main() {
     constexpr float WORLD_XY_HALF_EXTENT_M = 100.0f;
     constexpr float WORLD_Z_MIN_M          = 0.0f;
     constexpr float WORLD_Z_MAX_M          = 50.0f;
+    constexpr float CHECK_RANGE = 1000.0f;
 
     const Vector3 WORLD_MIN{-WORLD_XY_HALF_EXTENT_M, -WORLD_XY_HALF_EXTENT_M, WORLD_Z_MIN_M};
     const Vector3 WORLD_MAX{ WORLD_XY_HALF_EXTENT_M,  WORLD_XY_HALF_EXTENT_M, WORLD_Z_MAX_M};
@@ -19,11 +20,16 @@ int main() {
     simulationConfig.agentCount = AGENT_COUNT;
     simulationConfig.worldMax = WORLD_MAX;
     simulationConfig.worldMin = WORLD_MIN;
+    simulationConfig.neighborRadius = CHECK_RANGE;
 
     Simulation sim(simulationConfig);
 
-    if (!sim.Initialize())
+    if (!sim.Initialize()){
         return EXIT_FAILURE;
+    }
+
+
+    sim.run();
 
     return 0;
 
@@ -33,3 +39,5 @@ int main() {
 
 
 }
+
+
