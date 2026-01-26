@@ -12,6 +12,7 @@ add_executable(AutonomousAgentSim
     src/main.cpp
     src/aas/sim/Simulation.cpp
     src/aas/drone/Boid.cpp
+    src/aas/math/Formulas.cpp
 )
 
 # Allow includes like: #include "math/Vector3.h"

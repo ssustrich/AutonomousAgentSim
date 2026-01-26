@@ -7,6 +7,7 @@
 #include "aas\sim\World.h"
 #include "SimulationConfig.h"
 
+
 class Simulation
 {
 public:
@@ -18,6 +19,7 @@ public:
     // Execution
     bool StepOne();
     bool StepN(std::size_t numSteps);
+
     bool run();
 
 
@@ -26,5 +28,7 @@ private:
     WorldBounds worldBounds_{};
     bool worldInitialized_{false};
     bool ValidateWorld() const;
+    
     std::vector<Boid> boids_;
+    void update(float);
 };

@@ -8,8 +8,8 @@ struct SimulationConfig
     // fixed timestep, determinism flags, logging, etc.
     int agentCount = 0;
     Vector3 worldMin, worldMax;
-    float dt, maxSpeed, maxAccel, neighborRadius, separationRadius;
-    float wSeparation, wAlignment, wCohesion;   
+    float dt, maxSpeed, maxAccel, minSpeed, maxForce,neighborRadius, separationRadius;
+    float seperationWeight, alignmentWeight, cohesionWeight;
     enum boundaryBehavior {
         Wrap, Bounce
     };

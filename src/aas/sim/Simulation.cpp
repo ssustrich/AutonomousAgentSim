@@ -1,5 +1,7 @@
 #include "Simulation.h"
 #include "SimulationConfig.h"
+#include "aas\math\Vector2.h"
+#include "aas\math\Formulas.h"
 #include <iostream>
 #include <random> // Required for random number generation
 #include <iomanip> // For std::fixed and std::setprecision
@@ -18,18 +20,9 @@ bool Simulation::Initialize()
     std::mt19937 engine(seed);
     std::uniform_int_distribution<int> randomInt(1, 10000);
 
-
     std::uniform_int_distribution<int> rHeadingRange(1, 360);
     std::uniform_int_distribution<int> rSpeedRange(0, 100);
     std::setprecision(2);
-
-    // if ((config_.agentCount<1) || 
-    //     (config_.worldMax.x > config_.worldMin.x) ||
-    //     (config_.worldMax.y > config_.worldMin.y) ||
-    //     (config_.worldMax.z > config_.worldMin.z)){
-    //         std::cout << "Config invalid" << std::endl;
-    //         return false;
-    //     }
 
     std::cout << "Config valid" << std::endl;    
  
@@ -59,7 +52,8 @@ bool Simulation::Initialize()
 
 
         //When we create a boid it gets a random speed and range
-        Boid b(x, random_heading, random_speed); 
+        Vector2 vel =  Formulas::velocityVec(random_heading, random_speed);
+        Boid b(x, vel); 
 
         Vector3 v;
         v.x = random_component();
@@ -70,10 +64,6 @@ bool Simulation::Initialize()
         boids_.push_back(b);
     }
 
-     //for (const Boid& b : boids_)
-     //{
-     //    std::cout << b << std::endl;
-     //}
 
     return true;
 }
