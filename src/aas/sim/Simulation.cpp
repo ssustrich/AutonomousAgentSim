@@ -1,13 +1,15 @@
 #include "Simulation.h"
 #include "SimulationConfig.h"
-#include "aas\math\Vector2.h"
+#include "aas\math\Vec.h"
 #include "aas\math\Formulas.h"
 #include <iostream>
 #include <random> // Required for random number generation
 #include <iomanip> // For std::fixed and std::setprecision
-#include <__msvc_chrono.hpp>
+#include <chrono>
 #include <cmath> // Required for std::round
 
+using Vec2 = Vec<2>;
+using Vec3 = Vec<3>;
 
 Simulation::Simulation(const SimulationConfig& config)
     : config_(config)   
@@ -16,7 +18,7 @@ Simulation::Simulation(const SimulationConfig& config)
 }
 bool Simulation::Initialize()
 {
-    unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+    unsigned seed = static_cast<unsigned>(std::chrono::system_clock::now().time_since_epoch().count());
     std::mt19937 engine(seed);
     std::uniform_int_distribution<int> randomInt(1, 10000);
 
@@ -52,13 +54,13 @@ bool Simulation::Initialize()
 
 
         //When we create a boid it gets a random speed and range
-        Vector2 vel =  Formulas::velocityVec(random_heading, random_speed);
+        Vec2 vel =  Formulas::velocityVec(random_heading, random_speed);
         Boid b(x, vel); 
 
-        Vector3 v;
-        v.x = random_component();
-        v.y = random_component();
-        v.z = random_component();
+        Vec3 v;
+        v.x() = random_component();
+        v.y() = random_component();
+        v.z() = random_component();
 
         b.setLocation(v);
         boids_.push_back(b);
